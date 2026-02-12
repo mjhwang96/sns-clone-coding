@@ -1,10 +1,19 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
-import { auth } from "./firebase";
+import { auth } from "../../lib/firebase";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Title, Wrapper, Form, Input, Switcher, Error } from "../components/auth";
+import {
+  Title,
+  LittleImage,
+  Wrapper,
+  Form,
+  Input,
+  Switcher,
+  Error
+} from "../../lib/auth";
+import planAndBee from "../../assets/images/plane-and-bee.png";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -80,7 +89,10 @@ export default function Signup() {
 
   return (
     <Wrapper>
-      <Title>Sign Up for ✈️.🐝.</Title>
+      <Title>
+        Sign Up Plan B
+        <LittleImage src={planAndBee} />
+      </Title>
       <Form onSubmit={onSubmit}>
         <Input
           name="name"

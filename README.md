@@ -33,3 +33,30 @@ SNS Clone Coding (Nomad Coders Project - X 클론코딩)
 
 ### 공유하고 싶은 팁
 - 개발 진행하며 팁이 생기면 적어둘게요^^
+
+## 📂 5. 소스코드 구조
+- components: 재사용 UI
+- pages: 라우팅 단위 화면
+- lib: Firebase 및 인증 로직
+```bash
+src/
+├── App.tsx                      # 전체 라우팅 및 앱의 루트 컴포넌트
+├── assets                       # 정적 파일(이미지 등) 보관
+│   └── react.svg                # React 로고 이미지
+├── components                   # 재사용 가능한 UI 컴포넌트 모음
+│   ├── auth                     # 인증 관련 컴포넌트
+│   │   ├── GithubButton.tsx     # GitHub OAuth 로그인 버튼
+│   │   └── ProtectedRoute.tsx   # 인증된 사용자만 접근 가능한 라우트 가드
+│   ├── layout                   # 공통 레이아웃 컴포넌트
+│   │   └── Layout.tsx           # Header/Footer 등을 포함한 기본 페이지 레이아웃
+│   └── loading.tsx              # 로딩 상태 표시 컴포넌트
+├── lib                          # 외부 서비스 및 설정 관련 로직
+│   ├── auth.ts                  # 인증 관련 유틸 함수
+│   └── firebase.ts              # Firebase 초기화 및 설정
+├── main.tsx                     # React 앱 엔트리 포인트 (ReactDOM 렌더링)
+└── pages                        # 라우팅 단위의 페이지 컴포넌트
+    ├── Home.tsx                 # 메인(홈) 페이지
+    ├── Profile.tsx              # 사용자 프로필 페이지
+    ├── SignIn.tsx               # 로그인 페이지
+    └── SignUp.tsx               # 회원가입 페이지
+```

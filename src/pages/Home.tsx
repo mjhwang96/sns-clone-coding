@@ -1,4 +1,4 @@
-import { auth } from "./firebase";
+import { auth } from "../lib/firebase";
 import { toast } from "react-toastify";
 
 export default function Home() {

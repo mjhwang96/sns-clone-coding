@@ -1,7 +1,8 @@
 import { GithubAuthProvider, signInWithPopup } from "firebase/auth";
 import { styled } from "styled-components";
-import { auth } from "../routes/firebase";
+import { auth } from "../../lib/firebase";
 import { useNavigate } from "react-router-dom";
+import githubLogo from "../../assets/images/github-logo.svg";
 
 const Button = styled.span`
   margin-top: 30px;
@@ -37,7 +38,7 @@ export default function GithubButton() {
 
   return (
     <Button onClick={onClick}>
-      <Logo src="/github-logo.svg" />
+      <Logo src={githubLogo } />
       Continue with GitHub
     </Button>
   );

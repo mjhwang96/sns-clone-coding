@@ -2,16 +2,25 @@
 import { styled } from "styled-components";
 
 export const Wrapper = styled.div`
-  height: 100%;
+  width: 420px;
+  padding: 50px 40px;
+
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 420px;
-  padding: 50px 0px;
+  
+  border-radius: 20px;
+  border: 1px solid ${({ theme }) => theme.borderColor};
+
+  transition: background-color 0.3s ease, color 0.3s ease;
 `;
 
 export const Title = styled.h1`
-  font-size: 42px
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 `;
 
 export const Form = styled.form`
@@ -29,6 +38,7 @@ export const Input = styled.input`
   border: none;
   width: 100%;
   font-size: 16px;
+
   &[type="submit"] {
     cursor: pointer;
     &:hover {
@@ -80,4 +90,37 @@ width: 100%;
   &::after {
     margin-left: 12px;
   }
+`;
+
+export const Container = styled.div`
+  display: flex;
+  height: 100vh;
+  gap: 80px;
+  padding: 0 80px;
+`;
+
+export const Left = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Right = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const MainImage = styled.img`
+  width: 70%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+`;
+
+export const LittleImage = styled.img`
+  width: 70%;
+  max-width: 100px;
 `;

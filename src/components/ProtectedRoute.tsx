@@ -1,6 +1,6 @@
 // 로그인한 사용자는 볼 수 있고
 // 로그인하지 않은 사용자는 로그인 및 회원가입 페이지로 리디렉션
-import { auth } from "../routes/firebase";
+import { auth } from "../lib/firebase";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
