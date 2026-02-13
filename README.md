@@ -60,3 +60,7 @@ src/
     ├── SignIn.tsx               # 로그인 페이지
     └── SignUp.tsx               # 회원가입 페이지
 ```
+
+## 📃 6. 메인 페이지 구현 중간 공유 (Post Timeline)
+26.02.14
+![6. Post Timeline](./images/06.%20Post%20Timeline.png)
