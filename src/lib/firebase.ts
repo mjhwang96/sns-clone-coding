@@ -2,6 +2,11 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
+// Firestore
+import { getFirestore } from "firebase/firestore";
+// Firebase Storage
+import { getStorage } from "firebase/storage";
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -17,3 +22,9 @@ const app = initializeApp(firebaseConfig);
 
 // Authentication - Email/Password
 export const auth = getAuth(app);
+
+// Firestore Object
+export const db = getFirestore(app);
+
+// Firebase Storage Object
+export const storage = getStorage(app);

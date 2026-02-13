@@ -1,8 +1,18 @@
+import { styled } from "styled-components";
 import { auth } from "../lib/firebase";
 import { toast } from "react-toastify";
+import PostForm from "../components/post/PostForm";
+import PostList from "../components/post/PostList";
+
+
+const Wrapper = styled.div`
+  display: grid;
+  gap: 50px;
+  overflow-y: scroll;
+  grid-template-rows: 1fr 5fr;
+`;
 
 export default function Home() {
-
   const logOut = async() => {
     try {
       // 비동기 함수
@@ -15,8 +25,10 @@ export default function Home() {
   };
 
   return (
-    <h1>
+    <Wrapper>
+      <PostForm />
+      <PostList />
       <button onClick={logOut}>Log Out</button>
-    </h1>
+    </Wrapper>
   );
 }
