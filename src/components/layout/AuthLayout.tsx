@@ -1,17 +1,21 @@
 import type { PropsWithChildren } from "react";
+import FlexibleLayout from "./FlexibleLayout";
 import flyingBee from "../../assets/images/flying-bee.png";
-
-import { Container, Left, MainImage, Right } from "../../lib/auth";
+import { Content, MainImage, Sidebar } from "../../styles/layout";
 
 export default function AuthLayout({ children }: PropsWithChildren) {
   return (
-    <Container>
-      <Left>
-        <MainImage src={flyingBee} alt="platform" />
-      </Left>
-      <Right>
-        {children}
-      </Right>
-    </Container>
+    <FlexibleLayout
+      left={
+        <Sidebar>
+          <MainImage src={flyingBee} alt="platform" />
+        </Sidebar>
+      }
+      main={
+        <Content>{children}</Content>
+      }
+      leftRatio={2}
+      mainRatio={3}
+    />
   );
 }

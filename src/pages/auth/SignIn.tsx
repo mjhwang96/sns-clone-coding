@@ -13,7 +13,7 @@ import {
   Error,
   SocialBox,
   SocialTitle
-} from "../../lib/auth";
+} from "../../styles/layout";
 import GithubButton from "../../components/auth/GithubButton";
 import planAndBee from "../../assets/images/plane-and-bee.png";
 

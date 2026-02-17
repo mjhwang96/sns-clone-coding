@@ -9,11 +9,11 @@ SNS Clone Coding (Nomad Coders Project - X 클론코딩)
 이번 프로젝트는 단순한 연습을 넘어, 제대로 된 클론 코딩을 통해 저만의 포트폴리오를 완성하는 것을 목표로 하고 있습니다. 기능 구현뿐만 아니라 구조와 흐름을 이해하며, 결과물의 완성도를 높이는 데 집중해보고 싶습니다.
 
 ## 🧩 2. 메인 페이지 와이어프레임
-![1. Sign In Page](./images/01.%20Sign%20In%20Page.png)
-![2. Main Page](./images/02.%20Main%20Page.png)
-![3. Main Page - Create Post](./images/03.%20Main%20Page%20-%20Create%20Post.png)
-![4. Main Page - Edit, Delete Post](./images/04.%20Main%20Page%20-%20Edit,%20Delete%20Post.png)
-![5. Profile Page](./images/05.%20Profile%20Page.png)
+![1. Sign In Page](./images/design/01.%20Sign%20In%20Page.png)
+![2. Main Page](./images/design/02.%20Main%20Page.png)
+![3. Main Page - Create Post](./images/design/03.%20Main%20Page%20-%20Create%20Post.png)
+![4. Main Page - Edit, Delete Post](./images/design/04.%20Main%20Page%20-%20Edit,%20Delete%20Post.png)
+![5. Profile Page](./images/design/05.%20Profile%20Page.png)
 
 ## 🎨 3. 디자인 포인트 & 구현 목표
 

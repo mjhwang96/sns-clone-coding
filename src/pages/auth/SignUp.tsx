@@ -12,7 +12,7 @@ import {
   Input,
   Switcher,
   Error
-} from "../../lib/auth";
+} from "../../styles/layout";
 import planAndBee from "../../assets/images/plane-and-bee.png";
 
 export default function Signup() {

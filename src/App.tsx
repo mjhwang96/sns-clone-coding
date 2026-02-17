@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "./components/layout/MainLayout";
 import Loading from "./components/loading";
-import Home from "./pages/Home";
-import Profile from "./pages/Profile";
+import Home from "./pages/main/Home";
+import Profile from "./pages/main/Profile";
 import Signin from "./pages/auth/SignIn";
 import Signup from "./pages/auth/SignUp";
 
@@ -70,7 +70,11 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'GowunDodum', sans-serif;
     color: ${({ theme }) => theme.textColor};
     background-color: ${({ theme }) => theme.backgroundColor};
-    display: flex;
+  }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
   }
 `;
 
@@ -89,21 +93,19 @@ function App() {
 
   return (
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-      <>
-        <GlobalStyles />
+      <GlobalStyles />
 
-        <button
-          onClick={() => setIsDark((prev) => !prev)}
-          style={{
-            position: "fixed",
-            top: 20,
-            right: 20,
-          }}
-        >
-          { isDark ? "☀️ Light" : "🌙 Dark" }
-        </button>
-        { isLoading ? <Loading /> : <RouterProvider router={router} /> }
-      </>
+      <button
+        onClick={() => setIsDark((prev) => !prev)}
+        style={{
+          position: "fixed",
+          top: 20,
+          right: 20,
+        }}
+      >
+        { isDark ? "☀️ Light" : "🌙 Dark" }
+      </button>
+      { isLoading ? <Loading /> : <RouterProvider router={router} /> }
     </ThemeProvider>
   )
 }

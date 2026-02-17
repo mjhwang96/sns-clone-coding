@@ -2,7 +2,7 @@
 import { styled } from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 420px;
+  width: 60%;
   padding: 50px 40px;
 
   display: flex;
@@ -14,6 +14,30 @@ export const Wrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.borderColor};
 
   transition: background-color 0.3s ease, color 0.3s ease;
+`;
+
+// flex: ${(props) => props.$flex};
+// flex: ${({ $flex }) => $flex};
+export const Section = styled.div<{ $flex: number}>`
+  flex: ${({ $flex }) => $flex};
+`;
+
+export const Sidebar = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Content = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const MainImage = styled.img`
+  width: 70%;
 `;
 
 export const Title = styled.h1`
@@ -90,34 +114,6 @@ width: 100%;
   &::after {
     margin-left: 12px;
   }
-`;
-
-export const Container = styled.div`
-  display: flex;
-  height: 100vh;
-  gap: 80px;
-  padding: 0 80px;
-`;
-
-export const Left = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const Right = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const MainImage = styled.img`
-  width: 70%;
-  max-width: 500px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 `;
 
 export const LittleImage = styled.img`
