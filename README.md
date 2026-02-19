@@ -61,6 +61,12 @@ src/
     └── SignUp.tsx               # 회원가입 페이지
 ```
 
-## 📃 6. 메인 페이지 구현 중간 공유 (Post Timeline)
+## 📃 6. 구현 중간 공유 (Post Timeline)
 26.02.14
-![6. Post Timeline](./images/06.%20Post%20Timeline.png)
+![6. Post Timeline](./images/design/06.%20Post%20Timeline.png)
+
+## ⭐️ 7. 구현 최종 공유
+26.02.19
+![1. Sign In](./images/implementation/01.%20Sign%20In%20Page.png)
+![2. Post Timeline](./images/implementation/02.%20Post%20TImeline.png)
+![3. Profile Page Dark Mode](./images/implementation/03.%20Profile%20Page%20Dark%20Mode.png)

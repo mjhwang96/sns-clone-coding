@@ -12,7 +12,8 @@ export default function ProtectedRoute(
   // props.children: 구조분해
   { children }: { children: React.ReactNode }) {
     // Firebase에 로그인 정보 요청 (User or null)
-    const [ user, setUser ] = useState(auth.currentUser);
+    const [ , setUser ] = useState(auth.currentUser);
+
     const navigate = useNavigate();
 
     // useEffect: 컴포넌트가 렌더링된 후 실행되는 함수
