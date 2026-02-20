@@ -10,7 +10,7 @@ import Signup from "./pages/auth/SignUp";
 import reset from "styled-reset";
 import ProtectedRoute from './components/ProtectedRoute';
 import AuthLayout from './components/layout/AuthLayout';
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./lib/theme";
 import GowunDodum from './assets/fonts/GowunDodum-Regular.ttf';
 
@@ -78,6 +78,20 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
+const Footer = styled.a`
+  position: fixed;       /* 화면에 고정 */
+  bottom: 10px;          /* 아래에서 10px 위 */
+  right: 0;              /* 오른쪽 끝 */
+  margin-right: 10px;    /* 화면 안쪽으로 조금 띄우기 */
+  font-size: 12px;
+  color: #555;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 2px 6px;
+  border-radius: 4px;
+  z-index: 1000;
+`;
+
 function App() {
   const [ isDark, setIsDark ] = useState(false);
   const [ isLoading, setLoading ] = useState(true);
@@ -106,6 +120,17 @@ function App() {
         { isDark ? "☀️ Light" : "🌙 Dark" }
       </button>
       { isLoading ? <Loading /> : <RouterProvider router={router} /> }
+
+      {/* Icon 사용 저작권 표시 */}
+      <Footer
+        href="https://www.flaticon.com/free-icons/cute"
+        title="cute icons"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="credit-link"
+      >
+        Cute icons created by Smashicons - Flaticon
+      </Footer>
     </ThemeProvider>
   )
 }
