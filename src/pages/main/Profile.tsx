@@ -3,8 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { auth, db } from "../../lib/firebase";
 import styled from "styled-components";
 import defaultAvatar from "../../assets/images/default-avatar.png";
-import PostList from "../../components/post/PostList";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import PostList from "../../components/post/PostList";    // default import
+import { doc, getDoc, setDoc } from "firebase/firestore"; // named import
+import { uploadImage } from "../../services/cloudinary";
 
 const Wrapper = styled.div`
   display: grid;
@@ -24,6 +25,7 @@ const Avatar = styled.img`
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 16px;
+  cursor: pointer;
 `;
 
 const HiddenInput = styled.input`
@@ -38,35 +40,6 @@ const Name = styled.h2`
 const ListArea = styled.div`
   overflow-y: auto;
 `;
-
-// 압축된 Base64 이미지 파일로 변환
-const compressImage = (file: File): Promise<string> => {
-  return new Promise((resolve) => {
-    const img = new Image();
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      img.src = reader.result as string;
-    }
-
-    img.onload = () => {
-      const canvas = document.createElement("canvas");
-      const maxWidth = 600;
-      const scaleSize = maxWidth / img.width;
-
-      canvas.width = maxWidth;
-      canvas.height = img.height * scaleSize;
-
-      const ctx = canvas.getContext("2d");
-      ctx?.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-      const compressedBase64 = canvas.toDataURL("image/png", 0.5);
-      resolve(compressedBase64);
-    };
-
-    reader.readAsDataURL(file);
-  })
-}
 
 const Profile = () => {
   const user = auth.currentUser;
@@ -89,30 +62,33 @@ const Profile = () => {
     }
 
     fetchAvatar();
-  }, [user]);
+  }, []);
   
+  console.log(user?.uid);
+
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { files } = e.target;
-    if (!files) return;
+    const file = e.target.files?.[0];
+    if (!file) return;
 
-    const selectedFile = files[0];
-    const compressedBase64 = await compressImage(selectedFile);
+    // 1. 즉시 미리보기 (로컬 이미지)
+    setAvatar(URL.createObjectURL(file));
 
-    console.log(compressedBase64);
-    // Firestore 1MB 제한 체크
-    if (compressedBase64.length > 1024 * 1024) {
-      alert("이미지 용량이 너무 큽니다. (1MB 초과)");
-      return;
-    }
+    // 2. Cloudinary에 이미지 업로드
+    const imageUrl = await uploadImage(file, "profile");
+    console.log(imageUrl);
+    if (!imageUrl) return;
+
+    // 3. 실제 URL로 교체
+    setAvatar(imageUrl);
     
+    // 4. Firestore에 저장
     if (!user) return;
     const userRef = doc(db, "users", user.uid);
+
     await setDoc(userRef,
-      { photoURL: compressedBase64 },
+      { photoURL: imageUrl },
       { merge: true }
     );
-
-    setAvatar(compressedBase64);
   };
 
   return (
