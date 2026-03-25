@@ -42,7 +42,7 @@ jobs:
 
       # 5. 빌드 결과를 artifact로 업로드
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v5
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
