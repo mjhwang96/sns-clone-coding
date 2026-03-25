@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "./components/layout/MainLayout";
-import Loading from "./components/loading";
 import Home from "./pages/main/Home";
 import Profile from "./pages/main/Profile";
 import Signin from "./pages/auth/SignIn";
