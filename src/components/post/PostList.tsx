@@ -250,7 +250,12 @@ const PostList = ({userId}: PostListProps) => {
       );
     }
 
-    // 실시간 Post 연동
+    /* 실시간 Post 연동 (구독, 해제)
+     * onSnapshot은 호출하는 순간 구독이 시작 → useEffect 밖에서 실행하면 렌더링될 때마다 실행
+     * 따라서 []를 참조하여 최초 1회만 실행하는 것이 일반적
+     * 그러나 현재 코드에서는 다른 사용자가 로그인하면 userId가 변경됨. 이 때는 다른 프로필 페이지에서 쿼리가 필요하므로 [userId]를 참조
+     * return () => unsubscribe(); 코드에서 onSnapshot 해제 (메모리 누수, 중복 요청/렌더링 방지)
+     */
     const unsubscribe = onSnapshot(postsQuery, (snapshot) => {
       const data = snapshot.docs.map((doc) => {
         return {
@@ -258,6 +263,7 @@ const PostList = ({userId}: PostListProps) => {
           ...(doc.data() as Omit<Post, "id">)
         };
       });
+      // 실시간으로 받아온 데이터를 Posts에 등록
       setPosts(data);
     });
     return () => unsubscribe();
@@ -270,7 +276,7 @@ const PostList = ({userId}: PostListProps) => {
     }
   };
 
-  // 게시글 수정
+  // 게시글 수정 버튼 클릭 이벤트
   const handleEdit = async (id: string) => {
     const postRef = doc(db, "posts", id);
     await updateDoc(postRef, { text: editingText, image: editingImage });

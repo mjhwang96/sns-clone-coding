@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "./components/layout/MainLayout";
 import Loading from "./components/loading";
@@ -8,7 +8,7 @@ import Signin from "./pages/auth/SignIn";
 import Signup from "./pages/auth/SignUp";
 
 import reset from "styled-reset";
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 import AuthLayout from './components/layout/AuthLayout';
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./lib/theme";
@@ -94,16 +94,6 @@ const Footer = styled.a`
 
 function App() {
   const [ isDark, setIsDark ] = useState(false);
-  const [ isLoading, setLoading ] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async() => {
-      // await auth.authStateReady();
-      setTimeout(() => setLoading(false), 2000);
-    };
-
-    fetchData();
-  }, []);
 
   return (
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
@@ -119,7 +109,7 @@ function App() {
       >
         { isDark ? "☀️ Light" : "🌙 Dark" }
       </button>
-      { isLoading ? <Loading /> : <RouterProvider router={router} /> }
+      <RouterProvider router={router} />
 
       {/* Icon 사용 저작권 표시 */}
       <Footer
